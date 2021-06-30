@@ -1,4 +1,4 @@
-export class Satellite {
+export class Satellite{
     name: string;
     type: string;
     launchDate: string;
@@ -18,7 +18,10 @@ export class Satellite {
         this.launchDate = launchDate;
         this.orbitType = orbitType;
         this.operational = operational;
+
+        this.shouldShowWarning = this.shouldShowWarning
     }
 
+    
     
 }
