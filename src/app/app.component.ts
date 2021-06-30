@@ -15,11 +15,10 @@ export class AppComponent {
 
   constructor() {
     this.sourceList = [];
-    this.satelliteList = []
     let satellitesUrl = 'https://handlers.education.launchcode.org/static/satellites.json';
     
-    window.fetch(this.satellitesUrl).then(function(response) {
-      response.json().then(function(data) {
+    window.fetch(satellitesUrl).then((response: any) => {
+      response.json().then((data: any) => {
         let fetchedSatellites = data.satellites;
         
         for (let i = 0; i < fetchedSatellites.length; i++){
@@ -32,11 +31,11 @@ export class AppComponent {
             )
             this.sourceList.push(satellite);
           } 
-          this.satelliteList= this.sourceList.slice(0);
-        }.bind(this));
-      }.bind(this));
+        });
+      });
   }
 }
+
 
 /*this.sourceList.push(
    new Satellite("SiriusXM", "Communication", "2009-03-21", "LOW", true),
