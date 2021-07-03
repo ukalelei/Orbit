@@ -21,16 +21,37 @@ export class OrbitListComponent implements OnInit {
     
   }
 
-  sort(column: string): void {
-      // array.sort modifies the array, sorting the items based on the given compare function
+  sorted = false;
+
+  sort(column: String): void {
+    // array.sort modifies the array, sorting the items based on the given compare function
+    this.sorted = !this.sorted;
+    if(this.sorted){
       this.satellites.sort(function(a: Satellite, b: Satellite): number {
-         if(a[column] < b[column]) {
-            return -1;
-         } else if (a[column] > b[column]) {
+        // @ts-ignore
+          return -1;
+        } else {
+          // @ts-ignore
+          if (a[column] > b[column]) {
             return 1;
-         }
-         return 0;
+          }
+        }
+        return 0;
       });
-   }
+    }else{
+      this.satellites.sort(function(a: Satellite, b: Satellite): number {
+        // @ts-ignore
+        if(a[column] < b[column]) {
+          return 1;
+        } else {
+          // @ts-ignore
+          if (a[column] > b[column]) {
+            return -1;
+          }
+        }
+        return 0;
+      });
+    }
+  }
 }
   
